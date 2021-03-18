@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_snippet_filter_action" model="ir.actions.act_window">
+        <field name="name">Website Snippet Filter</field>
+        <field name="res_model">website.snippet.filter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="website_snippet_filter_menu" name="Website Snippet Filter" action="website_snippet_filter_action"
+              parent="website_sale.menu_ecommerce_settings" sequence="200"/>
+
+    <!-- tree view -->
+    <record id="website_snippet_filter_tree_view" model="ir.ui.view">
+        <field name="name">Website Snippet Filter List</field>
+        <field name="model">website.snippet.filter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="action_server_id"/>
+                <field name="website_id"/>
+                <field name="field_names"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="website_snippet_filter_form_view" model="ir.ui.view">
+        <field name="name">Website Snippet Filter Form</field>
+        <field name="model">website.snippet.filter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button icon="fa-cloud-download" attrs="{'invisible':[('is_published', '=', False)]}"><!--  attrs="{'invisible': ['|',('avail_in_wc','=',False),('website_published','=',True)]}" -->
+                            <span class="text-success">Published</span>
+                        </button>
+                        <button icon="fa-cloud-upload" attrs="{'invisible': [('is_published', '=', True)], }">
+                            <span class="text-danger">Unpublished</span>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="action_server_id"/>
+                        <field name="website_id"/>
+                        <field name="field_names" readonly="True"/>
+                        <field name="fields_id"/>
+                        <field name="is_published" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
