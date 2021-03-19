@@ -41,9 +41,14 @@
                     <group>
                         <field name="name"/>
                         <field name="action_server_id"/>
+                        <field name="filter_id"/>
+                        <field name="related_model"/>
                         <field name="website_id"/>
-                        <field name="field_names" readonly="True"/>
-                        <field name="fields_id"/>
+                    </group>
+                    <group>
+                        <field name="field_names"/>
+                        <field name="fields_id" widget="many2many_tags" domain="[('model_id', '=', related_model)]"/>
+                        <field name="limit"/>
                         <field name="is_published" invisible="1"/>
                     </group>
                 </sheet>
