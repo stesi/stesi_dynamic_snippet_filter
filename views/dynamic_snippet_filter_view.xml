@@ -6,8 +6,18 @@
         <field name="res_model">website.snippet.filter</field>
         <field name="view_mode">tree,form</field>
     </record>
+<!--    <menuitem id="website_snippet_filter_menu" name="Website Snippet Filter" action="website_snippet_filter_action"-->
+<!--              parent="website_sale.menu_ecommerce_settings" sequence="200"/>-->
     <menuitem id="website_snippet_filter_menu" name="Website Snippet Filter" action="website_snippet_filter_action"
-              parent="website_sale.menu_ecommerce_settings" sequence="200"/>
+              parent="website.menu_website_global_configuration" sequence="200"/>
+
+    <record id="stesi_partner_action" model="ir.actions.act_window">
+        <field name="name">Partners</field>
+        <field name="res_model">stesi.res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="stesi_partner_menu" name="Partners" action="stesi_partner_action"
+              parent="website.menu_website_global_configuration" sequence="201"/>
 
     <!-- tree view -->
     <record id="website_snippet_filter_tree_view" model="ir.ui.view">
