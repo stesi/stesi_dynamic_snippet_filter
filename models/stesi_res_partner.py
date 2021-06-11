@@ -8,4 +8,4 @@ class StesiResPartner(models.Model):
     partner_id = fields.Many2one('res.partner')
     name = fields.Char(related='partner_id.name')
     image = fields.Binary(related='partner_id.image_512')
-    description = fields.Html()
+    description = fields.Html(required=True)

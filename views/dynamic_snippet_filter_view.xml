@@ -16,8 +16,8 @@
         <field name="res_model">stesi.res.partner</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem id="stesi_partner_menu" name="Partners" action="stesi_partner_action"
-              parent="website.menu_website_global_configuration" sequence="201"/>
+<!--    <menuitem id="stesi_partner_menu" name="Partners" action="stesi_partner_action"-->
+<!--              parent="website.menu_website_global_configuration" sequence="201"/>-->
 
     <!-- tree view -->
     <record id="website_snippet_filter_tree_view" model="ir.ui.view">

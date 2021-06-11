@@ -26,7 +26,7 @@
             <field name="limit" eval="16"/>
             <field name="name">Selected Partner(on data)</field>
             <field name="website_id" ref="website.default_website"/>
-             <field name="field_names">name,image,description</field>
+             <field name="field_names">image,description</field>
         </record>
     </data>
 </odoo>
