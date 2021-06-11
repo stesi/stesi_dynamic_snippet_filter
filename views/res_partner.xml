@@ -8,8 +8,8 @@
             <notebook position="inside">
                 <page string="Website" name="website_page">
                     <field name="show_in_website" string="Show in Website"/>
-                    <field name="selected_partners_ids" attrs="{'invisible': [('show_in_website','=', False)]}"
-                           context="{'default_partner_id': 'id'}"/><!-- attrs="{'invisible': [('show_in_website','=', False)]}"-->
+                    <field name="selected_partner_id" context="{'default_partner_id': id}" domain="[('partner_id', '=', id)]"
+                           attrs="{'invisible': [('show_in_website','=', False)]}" string="Partner on Website"/>
                 </page>
             </notebook>
         </field>

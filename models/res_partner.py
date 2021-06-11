@@ -5,4 +5,4 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     show_in_website = fields.Boolean("Show in website?")
-    selected_partners_ids = fields.One2many('stesi.res.partner', 'partner_id')
+    selected_partner_id = fields.Many2one('stesi.res.partner', string="Partner on Website")
