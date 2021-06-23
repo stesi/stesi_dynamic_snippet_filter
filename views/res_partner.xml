@@ -10,6 +10,7 @@
                     <group>
                         <field name="show_in_website" string="Show in Website"/>
                         <field name="description"/>
+                        <field name="website_image" widget="image" class="oe_avatar"/>
                     </group>
                 </page>
             </notebook>
