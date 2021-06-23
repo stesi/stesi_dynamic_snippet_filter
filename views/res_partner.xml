@@ -9,6 +9,7 @@
                 <page string="Website" name="website_page">
                     <group>
                         <field name="show_in_website" string="Show in Website"/>
+                        <field name="description"/>
                     </group>
                 </page>
             </notebook>
