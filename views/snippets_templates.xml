@@ -16,12 +16,11 @@
         <field name="res_model">ir.ui.view</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="search_some_snippets"/>
+        <field name="context">{'search_default_only_some_key':1}</field>
     </record>
 
     <menuitem id="snippet_templates_menu" name="Snippets Templates" parent="website.menu_website_global_configuration"
               action="snippet_templates_action"
               sequence="250"/>
-
-
 
 </odoo>

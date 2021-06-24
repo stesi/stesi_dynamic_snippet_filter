@@ -8,9 +8,10 @@
             <notebook position="inside">
                 <page string="Website" name="website_page">
                     <group>
-                        <field name="show_in_website" string="Show in Website"/>
-                        <field name="description"/>
+                        <field name="is_published"/>
+                        <field name="description" attrs="{'required': [('is_published','=', True)]}"/>
                         <field name="website_image" widget="image" class="oe_avatar"/>
+                        <field name="web_image" widget="image" class="oe_avatar"/>
                     </group>
                 </page>
             </notebook>

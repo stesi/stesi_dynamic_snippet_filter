@@ -8,25 +8,11 @@
         </record>
 
 <!--         <record id="stesi_dynamic_snippet_data_source_partner" model="website.snippet.filter">-->
-<!--            <field name="field_names">name,code,image_url:image,phone_code:char</field>-->
 <!--            <field name="filter_id" ref="stesi_dynamic_snippet_partner_filter"/>-->
 <!--            <field name="limit" eval="16"/>-->
 <!--            <field name="name">Partner(on data)</field>-->
-<!--            <field name="website_id" ref="website.default_website"/>-->
+<!--            <field name="website_id" ref="\"/>&lt;!&ndash; website.default_website&ndash;&gt;-->
 <!--             <field name="field_names">display_name,image_512</field>-->
-<!--        </record>-->
-
-<!--        <record id="stesi_dynamic_snippet_selected_partner_filter" model="ir.filters">-->
-<!--            <field name="name">Partner Selected</field>-->
-<!--            <field name="model_id">stesi.res.partner</field>-->
-<!--            <field name="user_id" eval="False" />-->
-<!--        </record>-->
-<!--        <record id="stesi_dynamic_snippet_data_source_selected_partner" model="website.snippet.filter">-->
-<!--            <field name="filter_id" ref="stesi_dynamic_snippet_selected_partner_filter"/>-->
-<!--            <field name="limit" eval="16"/>-->
-<!--            <field name="name">Selected Partner(on data)</field>-->
-<!--            <field name="website_id" ref="website.default_website"/>-->
-<!--             <field name="field_names">image,description</field>-->
 <!--        </record>-->
     </data>
 </odoo>
