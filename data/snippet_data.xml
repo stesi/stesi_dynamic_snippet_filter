@@ -11,8 +11,8 @@
 <!--            <field name="filter_id" ref="stesi_dynamic_snippet_partner_filter"/>-->
 <!--            <field name="limit" eval="16"/>-->
 <!--            <field name="name">Partner(on data)</field>-->
-<!--            <field name="website_id" ref="\"/>&lt;!&ndash; website.default_website&ndash;&gt;-->
-<!--             <field name="field_names">display_name,image_512</field>-->
+<!--            <field name="website_id" ref="website.default_website"/>-->
+<!--             <field name="field_names">web_image,description</field>-->
 <!--        </record>-->
     </data>
 </odoo>

@@ -1,5 +1,5 @@
-from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 
 class WebsiteSnippetFilter(models.Model):
@@ -31,6 +31,13 @@ class WebsiteSnippetFilter(models.Model):
             self.related_model = self.env['ir.model'].search([('model', '=', self.filter_id.model_id)])
         elif self.action_server_id:
             self.related_model = self.action_server_id.model_id
+
+    @api.constrains('limit')
+    def _check_limit(self):
+        """Limit must be between 1 and 16."""
+        for record in self:
+            if record.limit <= 0:
+                raise ValidationError(_("The limit must greater than 0"))
 
 
     # @api.onchange('fields_id')

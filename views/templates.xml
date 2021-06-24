@@ -9,12 +9,6 @@
                         <img t-if="len(fieldsImg) > 0" class="s_media_list_img h-100 w-100" loading="lazy" t-att-src="fieldsImg[0]"/><!-- card-img-top p-3 -->
                     </div>
                     <div class="col-lg-8 s_media_list_body">
-<!--                        <h5 t-if="len(fields) > 0" class="card-title">-->
-<!--                                <t t-raw="fields[0]"/>-->
-<!--                        </h5>-->
-<!--                        <div t-if="len(fields) > 1" class="card-text">-->
-<!--                            <t t-raw="fields[1]"/>-->
-<!--                        </div>-->
                         <div class="card-text">
                             <t t-raw="fields[0]"/>
                         </div>
@@ -22,15 +16,68 @@
                 </div>
             </t>
     </template>
+
+    <template id="dynamic_filter_template_image_title_footer2" name="Image Up Description Down">
+        <t t-foreach="records" t-as="record">
+            <t t-set="fields" t-value="list(record['fields'].values())"/>
+            <t t-set="fieldsImg" t-value="list(record['image_fields'].values())"/>
+            <div class="card h-100" t-att-data-url="record['fields']['call_to_action_url']">
+                <div class="card-body">
+                    <img t-if="len(fieldsImg) > 0" class="card-img-top p-3" loading="lazy" t-att-src="fieldsImg[0]"/>
+                    <div t-if="len(fields) > 0" class="card-text">
+                        <t t-raw="fields[0]"/>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center"></div>
+            </div>
+        </t>
+    </template>
 </odoo>
-    <!--                    <div class="card" t-att-data-url="record['fields']['call_to_action_url']">-->
-    <!--                        <img t-if="len(fieldsImg) > 0" class="card-img-top p-3" loading="lazy" t-att-src="fieldsImg[0]"/>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <h5 t-if="len(fields) > 0" class="card-title">-->
-    <!--                                <t t-raw="fields[0]"/>-->
-    <!--                            </h5>-->
-    <!--                            <div t-if="len(fields) > 1" class="card-text">-->
-    <!--                                <t t-raw="fields[1]"/>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
+<!--    <template id="dynamic_filter_template_horizontal_image_description2" name="Media List Dynamic">&lt;!&ndash; dynamic_filter_s_media_list &ndash;&gt;-->
+<!--        <t t-foreach="records" t-as="record">-->
+<!--            <t t-set="fields" t-value="list(record['fields'].values())"/>-->
+<!--            <t t-set="fieldsImg" t-value="list(record['image_fields'].values())"/>-->
+<!--            <div class="col-lg-12 s_media_list_item pt16 pb16" data-name="Media item">-->
+<!--                <div class="row s_col_no_resize s_col_no_bgcolor no-gutters align-items-center o_cc o_cc1">-->
+<!--                    <div class="col-lg-4 align-self-stretch s_media_list_img_wrapper">-->
+<!--                        <img t-if="len(fieldsImg) > 0" loading="lazy" t-att-src="fieldsImg[0]"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-8 s_media_list_body">-->
+<!--                        <t t-raw="fields[0]"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+
+<!--    <template id="stesi_dynamic_snippet_filter.s_dynamic_media_list_template" name="Dynamic Media">-->
+<!--        <section t-attf-class="#{snippet_name} s_dynamic bg-200 pt32 pb32">-->
+<!--            <div class="container o_not_editable">-->
+<!--                <div class="css_non_editable_mode_hidden">-->
+<!--                    <div class="missing_option_warning alert alert-info rounded-0 fade show d-print-none">-->
+<!--                        Your Dynamic Snippet will be displayed here... This message is displayed because you did not provided both a filter and a template to use.<br/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="dynamic_snippet_template"/>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--    </template>-->
+
+<!--    <template id="dynamic_filter_s_media_list_selector" inherit_id="website.snippets">-->
+<!--        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">-->
+<!--            <t t-snippet="stesi_dynamic_snippet_filter.s_dynamic_media_list_template" t-thumbnail="/website/static/src/img/snippets_thumbs/s_media_list.svg"/>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--    <template id="s_dynamic_media_list_options" inherit_id="website.snippet_options">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <t t-call="website.s_dynamic_snippet_options_template">-->
+<!--                <t t-set="snippet_name" t-value="'dynamic_snippet'"/>-->
+<!--                <t t-set="snippet_selector" t-value="'.s_dynamic_snippet'"/>-->
+<!--                <t t-set="grouping_message">Items per row</t>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+
+

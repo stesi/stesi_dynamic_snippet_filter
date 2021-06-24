@@ -3,7 +3,7 @@
     'Description': 'This module allow to create dynamic website snippets',
     'author': 'STeSI Srl',
     'license': 'OPL-1',
-    'depends': ['website', 'contacts'],
+    'depends': ['website_partner', 'contacts'],
     'data': [
                 # 'security/ir.model.access.csv',
                 'data/snippet_data.xml',
