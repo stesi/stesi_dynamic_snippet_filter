@@ -8,7 +8,6 @@
             <notebook position="inside">
                 <page string="Website" name="website_page">
                     <group>
-<!--                        <field name="description" />-->
                         <field name="website_description" strip_style="True"/><!-- strip_style="True" -->
                         <field name="website_image" widget="image" class="oe_avatar"/>
                         <field name="web_image" widget="image" class="oe_avatar"/>

@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <img t-if="len(fieldsImg) > 0" class="card-img-top p-3" loading="lazy" t-att-src="fieldsImg[0]"/>
                     <div t-if="len(fields) > 0" class="card-text">
-                        <div t-raw="fields[0]"/> <!-- <t t-raw="fields[0]"/> -->
+                        <div t-raw="fields[0]"/>
                     </div>
                 </div>
 <!--                <div class="card-footer d-flex align-items-center"></div>-->
