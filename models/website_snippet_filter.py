@@ -29,8 +29,16 @@ class WebsiteSnippetFilter(models.Model):
         else:
             self.field_names = 'name'
 
-    # @api.onchange('field_names')
-    # def change_field_ids(self):
+    @api.onchange('field_names')
+    def change_field_ids(self):
+        fields_names = self.field_names.split()
+        field_ids = self.fields_ids
+        if len(self.field_names) > len(self.fields_ids):
+            for field_name in fields_names:
+                field_name_obj = self.env['ir.model.fields'].search([('name', '=', field_name), ('model_id', '=', self.related_model.id)])
+                if field_name_obj:
+                    if field_name_obj not in field_ids:
+                        self.fields_ids |= field_name_obj
 
     def get_string_from_list(self, list):
         ret_str = ""
@@ -53,6 +61,18 @@ class WebsiteSnippetFilter(models.Model):
             if record.limit <= 0:
                 raise ValidationError(_("The limit must greater than 0"))
 
+    def write(self, vals):
+        result = super(WebsiteSnippetFilter, self).write(vals)
+        fields_names = self.field_names.split(",")
+        field_ids = self.fields_ids
+        if len(self.field_names) > len(self.fields_ids):
+            for field_name in fields_names:
+                field_name_obj = self.env['ir.model.fields'].search(
+                    [('name', '=', field_name), ('model_id', '=', self.related_model.id)])
+                if field_name_obj:
+                    if field_name_obj not in field_ids:
+                        self.fields_ids |= field_name_obj
+        return result
 
     # @api.onchange('fields_id')
     # def _check_fields_names(self):
