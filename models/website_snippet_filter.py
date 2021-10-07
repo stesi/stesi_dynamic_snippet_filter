@@ -11,18 +11,32 @@ class WebsiteSnippetFilter(models.Model):
     #     elif self.action_server_id != False:
     #         domain = [('model_id', '=', self.action_server_id.model_id)]
     #     return domain
-
-    fields_id = fields.Many2many('ir.model.fields')
+    # field_names = fields.Char(help="A list of comma-separated field names")
+    fields_ids = fields.Many2many('ir.model.fields')
 
     related_model = fields.Many2one('ir.model', compute='_compute_related_model')
 
-    @api.onchange('fields_id')
+    @api.onchange('fields_ids')
     def change_field_names(self):
-        if not self.field_names:
-            self.field_names = "name"
-        for field in self.fields_id:
-            #self.field_names += ","+str(field.name)+":"+str(field.ttype)
-            self.field_names += "," + str(field.name)
+        if self.fields_ids:
+            fields = self.fields_ids.mapped('name')
+            self.field_names = self.get_string_from_list(fields)
+            # for field in fields:
+            #     if field.name not in self.field_names:
+            #         self.field_names += "," + field.name if len(self.fields_ids) > 0 else field.name + ","
+            #     else:
+            #         continue
+        else:
+            self.field_names = 'name'
+
+    # @api.onchange('field_names')
+    # def change_field_ids(self):
+
+    def get_string_from_list(self, list):
+        ret_str = ""
+        for l in list:
+            ret_str += l if len(ret_str) == 0 else "," + l
+        return ret_str
 
     @api.onchange('filter_id', 'action_server_id')
     def _compute_related_model(self):

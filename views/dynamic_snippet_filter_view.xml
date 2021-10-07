@@ -57,7 +57,7 @@
                     </group>
                     <group>
                         <field name="field_names"/>
-                        <field name="fields_id" widget="many2many_tags" domain="[('model_id', '=', related_model)]"/>
+                        <field name="fields_ids" widget="many2many_tags" domain="[('model_id', '=', related_model)]"/>
                         <field name="limit"/>
                         <field name="is_published" invisible="1"/>
                     </group>
