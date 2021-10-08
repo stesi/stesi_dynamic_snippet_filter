@@ -31,14 +31,16 @@ class WebsiteSnippetFilter(models.Model):
 
     @api.onchange('field_names')
     def change_field_ids(self):
-        fields_names = self.field_names.split()
+        fields_names = self.field_names.split() if self.field_names else ''
         field_ids = self.fields_ids
-        if len(self.field_names) > len(self.fields_ids):
-            for field_name in fields_names:
-                field_name_obj = self.env['ir.model.fields'].search([('name', '=', field_name), ('model_id', '=', self.related_model.id)])
-                if field_name_obj:
-                    if field_name_obj not in field_ids:
-                        self.fields_ids |= field_name_obj
+        if field_ids and fields_names:
+            if len(self.field_names) > len(self.fields_ids):
+                for field_name in fields_names:
+                    # field_name_obj = self.env['ir.model.fields'].search([('name', '=', field_name), ('model_id', '=', self.related_model.id)])
+                    field_name_obj = self.related_model.field_id.filtered(lambda f: f.name == field_name)
+                    if field_name_obj:
+                        if field_name_obj not in field_ids:
+                            self.fields_ids |= field_name_obj
 
     def get_string_from_list(self, list):
         ret_str = ""
